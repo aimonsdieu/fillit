@@ -1,8 +1,8 @@
 #ifndef FILLI_H
 # define FILLI_H
 
-# include "../libft/libft.h"
 # include <fcntl.h>
+# include "../libft/libft.h"
 
 typedef enum	e_bool
 {
@@ -43,8 +43,8 @@ typedef struct	s_tetra
 	char	type;
 }				t_tetra;
 
-t_tetra *ft_gettetra(int fdes);
-e_bool	is_tetra(t_tetra *tetra);
-void	ft_deltetra(t_tetra *tetra);
+t_tetra			*ft_gettetra(int fdes);
+e_bool			is_tetra(t_tetra *tetra);
+void			ft_deltetra(t_tetra *tetra);
 
 #endif
