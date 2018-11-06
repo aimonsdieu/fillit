@@ -39,7 +39,7 @@ enum			e_tetra_type
 
 typedef struct	s_tetra
 {
-	char	tetra[4][4];
+	char	bloc[4][4];
 	char	type;
 }				t_tetra;
 
