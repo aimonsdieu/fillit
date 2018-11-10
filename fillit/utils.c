@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/06 19:07:11 by pkabore           #+#    #+#             */
+/*   Updated: 2018/11/06 19:07:17 by pkabore          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 
@@ -28,10 +40,10 @@ int		ft_istetra(t_tetra *tetra)
 
 t_tetra		*ft_gettetra(int fd)
 {
-	t_tetra	*tetra;
-	int		st;
-	size_t	i;
-	int		tetra_type;
+	t_tetra		*tetra;
+	int			st;
+	size_t		i;
+	int			tetra_type;
 
 	i = 0;
 	if (!(tetra = (t_tetra *)malloc(sizeof(*tetra))))
