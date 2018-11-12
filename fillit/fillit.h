@@ -6,7 +6,7 @@
 /*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:06:53 by pkabore           #+#    #+#             */
-/*   Updated: 2018/11/10 04:56:03 by pkabore          ###   ########.fr       */
+/*   Updated: 2018/11/12 09:50:16 by pkabore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ enum				e_tetra_type
 	J_TETRA_NOR,
 	J_TETRA_DEMIR,
 	J_TETRA_QUARTR,
-	J_TETRA_QUARTL,
+	J_TETRA_QUARTL
 };
 
 typedef struct		s_tetra
@@ -72,6 +72,6 @@ char				**ft_get_square(void);
 int					ft_place_tetra(char **square, t_tetra *tetra);
 int					ft_remove_tetra(char **square, char type, size_t index);
 int					ft_is_wellfilled(char **square);
-int					ft_fillit(t_tetra *tetraminos);
+int					ft_fillit(t_tetra *tetraminos, size_t pos);
 
 #endif
