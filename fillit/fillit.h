@@ -6,7 +6,7 @@
 /*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 19:06:53 by pkabore           #+#    #+#             */
-/*   Updated: 2018/11/12 09:50:16 by pkabore          ###   ########.fr       */
+/*   Updated: 2018/11/15 17:47:11 by pkabore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct		s_tetra
 	struct s_tetra	*next;
 }					t_tetra;
 
+# define MAX_SIDE 11
+
 char				ft_gettetra_type_a(char **s);
 char				ft_gettetra_type_b(char **s);
 char				ft_gettetra_type_c(char **s);
@@ -69,7 +71,7 @@ t_tetra				*ft_gettetraminos(int fd);
 void				ft_deltetraminos(t_tetra *first_tetra);
 
 char				**ft_get_square(void);
-int					ft_place_tetra(char **square, t_tetra *tetra);
+int					ft_place_tetra(char **square);
 int					ft_remove_tetra(char **square, char type, size_t index);
 int					ft_is_wellfilled(char **square);
 int					ft_fillit(t_tetra *tetraminos, size_t pos);
