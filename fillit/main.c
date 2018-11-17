@@ -6,47 +6,46 @@
 /*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 01:59:35 by pkabore           #+#    #+#             */
-/*   Updated: 2018/11/09 18:51:02 by pkabore          ###   ########.fr       */
+/*   Updated: 2018/11/16 16:41:47 by pkabore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	ft_puttetra(t_tetra *tetra)
+void	ft_display(char **square)
 {
 	char	i;
-	char	j;
 
 	i = 0;
-	while (i < 4)
+	while (*(square + i))
 	{
-		j = 0;
-		while (j < 4)
-		{
-			if (*(*(tetra->bloc + i) + j) != '.')
-				ft_putchar(tetra->alpha_order);
-			else
-				ft_putchar('.');
-			j++;
-		}
-		ft_putchar('\n');
+		ft_putendl(*(square + i));
 		i++;
 	}
 }
 
-int		main(void)
+int		main(int argc, char **argv)
 {
 	int			fd;
 	t_tetra		*tetra;
+	char		**square;
 
-	fd = open("sample.fillit", O_RDONLY);
-	tetra = ft_gettetraminos(fd);
-	while (tetra)
+	if (argc != 2)
 	{
-		ft_puttetra(tetra);
-		tetra = tetra->next;
-		if (tetra)
-			ft_putchar('\n');
+		ft_putendl("usage: ./fillit fillit_file");
+		return (0);
 	}
+	fd = open(argv[1], O_RDONLY);
+	square = ft_get_square();
+	if (fd < 0 || square == NULL)
+		return (0);
+	tetra = ft_gettetraminos(fd);
+	if (tetra == NULL)
+	{
+		ft_putendl("error");
+		return (0);
+	}
+	if (ft_fillit(tetra, square, 2, 0))
+		ft_display(square);
 	return (0);
 }

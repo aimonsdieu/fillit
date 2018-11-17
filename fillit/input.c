@@ -6,7 +6,7 @@
 /*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 19:11:54 by pkabore           #+#    #+#             */
-/*   Updated: 2018/11/09 09:38:15 by mcherif          ###   ########.fr       */
+/*   Updated: 2018/11/16 18:47:35 by pkabore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static char	ft_check_nl(t_tetra *first_tetra, char *line)
 
 static void	ft_add_tetra(t_tetra **first_tetra, t_tetra *tetra)
 {
+	t_tetra *tmp;
+
 	if (!tetra)
 		return ;
 	if (*first_tetra == NULL)
@@ -48,8 +50,11 @@ static void	ft_add_tetra(t_tetra **first_tetra, t_tetra *tetra)
 		*first_tetra = tetra;
 		return ;
 	}
-	tetra->next = *first_tetra;
-	*first_tetra = tetra;
+	tmp = *first_tetra;
+	while ((*first_tetra)->next)
+		*first_tetra = (*first_tetra)->next;
+	(*first_tetra)->next = tetra;
+	*first_tetra = tmp;
 }
 
 t_tetra		*ft_gettetraminos(int fd)

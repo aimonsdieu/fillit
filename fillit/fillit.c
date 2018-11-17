@@ -6,7 +6,7 @@
 /*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 01:59:19 by pkabore           #+#    #+#             */
-/*   Updated: 2018/11/15 20:14:44 by pkabore          ###   ########.fr       */
+/*   Updated: 2018/11/17 01:00:22 by pkabore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,38 +36,51 @@ void	ft_increase_area(char **square)
 
 	i = 0;
 	len = ft_strlen(*square);
-	while (i < len)
+	while (i <= len)
 	{
-		*(*(square + i) + len) = '.';
+		ft_memset(*(square + i), '.', len + 1);
 		i++;
 	}
-	if (i < MAX_SIDE)
-		ft_memset(*(square + i), '.', len + 1);
 }
 
-t_bool	ft_fillit(t_tetra *tetraminos, square)
+int		ft_place_tetra(char **square, char type)
 {
-	if (tetraminos == NULL)
+	
+}
+
+void	ft_remove_tetra(char **square, char type, size_t index)
+{
+	if (ft_remove_type_a(square, type, index))
+		return ;
+	if (ft_remove_type_b(square, type, index))
+		return ;
+	if (ft_remove_type_c(square, type, index))
+		return ;
+	ft_remove_type_d(square, type, index);
+}
+
+t_bool	ft_fillit(t_tetra *tetra, char **square, char pos)
+{
+	size_t len;
+
+	len = ft_strlen(*square)
+	if (tetra == NULL)
 		return (true);
-	while (tetraminos)
+	while (pos < len)
 	{
-		if (ft_place_tetra(square, tetraminos))
+		if ((pos = ft_place_tetra(square, tetra->type)))
 		{
-			if (ft_fillit(tetraminos->next, square))
+			if (ft_fillit(tetra->next, square, pos + 1))
 				return (true);
 			else
 			{
-				ft_remove_tetra(tetraminos, index);
-				if (ft_fillit(tetraminos->next, square))
+				ft_remove_tetra(square, tetra->type, pos);
+				if (ft_fillit(tetra, square, pos + 1))
 					return (true);
 			}
 		}
-		else if (ft_fillit(tetraminos->next, square))
-			return (true);
 	}
-	if (tetraminos == NULL)
-	{
-		ft_increase_area(square);
-		return (false);
-	}
+	ft_increase_area(square);
+	if (ft_fillit(square, tetra, 0))
+		return (true);
 }
