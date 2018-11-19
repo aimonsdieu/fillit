@@ -12,14 +12,13 @@
 
 #include "fillit.h"
 
-static int	ft_first_dot_pos(const char **s, char index)
+int		ft_first_dot_pos(char **s, int index)
 {
 	int		i;
 	int		j;
-	size_t	len;
+	int		len;
 
-	index = index + 1;
-	len = ft_strlen(*s);
+	len = (int)ft_strlen(*s);
 	i = index / len;
 	j = index % len;
 	while (i < len)
@@ -35,102 +34,106 @@ static int	ft_first_dot_pos(const char **s, char index)
 	return (-1);
 }
 
-char		ft_place_o(const char **s, char index, char alpha_order)
+int		ft_place_o(char **s, int index, t_tetra *tetro)
 {
 	int		i;
 	int		j;
-	size_t	len;
+	int		len;
 
-	len = ft_strlen(*s);
+	len = (int)ft_strlen(*s);
 	while ((index = ft_first_dot_pos(s, index)) >= 0)
 	{
 		i = index / len;
 		j = index % len;
 		if (i + 1 < len && j + 1 < len && s[i][j + 1] == '.'\
 			&& s[i + 1][j] == '.' && s[i + 1][j + 1] == '.')
-			if (tetra->type == O_TETRA)
-			{
-				s[i][j] = alpha_order;
-				s[i][j + 1] = alpha_order;
-				s[i + 1][j] = alpha_order;
-				s[i + 1][j + 1] = alpha_order;
-				return (index);
-			}
+		{
+			s[i][j] = tetro->order;
+			s[i][j + 1] = tetro->order;
+			s[i + 1][j] = tetro->order;
+			s[i + 1][j + 1] = tetro->order;
+			tetro->pos = index;
+			return (0);
+		}
+		index++;
 	}
 	return (-1);
 }
 
-char		ft_place_ih(const char **s, char index, char alpha_order)
+int		ft_place_iv(char **s, int index, t_tetra *tetro)
 {
 	int		i;
 	int		j;
-	size_t	len;
+	int		len;
 
-	len = ft_strlen(*s);
+	len = (int)ft_strlen(*s);
 	while ((index = ft_first_dot_pos(s, index)) >= 0)
 	{
 		i = index / len;
 		j = index % len;
 		if (i + 3 < len && s[i + 1][j] == '.'\
 			&& s[i + 2][j] == '.' && s[i + 3][j] == '.')
-			if (tetra->type == I_TETRA_H)
-			{
-				s[i][j] = alpha_order;
-				s[i + 1][j] = alpha_order;
-				s[i + 2][j] = alpha_order;
-				s[i + 3][j] = alpha_order;
-				return (index);
-			}
+		{
+			s[i][j] = tetro->order;
+			s[i + 1][j] = tetro->order;
+			s[i + 2][j] = tetro->order;
+			s[i + 3][j] = tetro->order;
+			tetro->pos = index;
+			return (0);
+		}
+		index++;
 	}
 	return (-1);
 }
 
-char		ft_place_iv(const char **s, char index, char alpha_order)
+int		ft_place_ih(char **s, int index, t_tetra *tetro)
 {
 	int		i;
 	int		j;
-	size_t	len;
+	int		len;
 
-	len = ft_strlen(*s);
+	len = (int)ft_strlen(*s);
 	while ((index = ft_first_dot_pos(s, index)) >= 0)
 	{
 		i = index / len;
 		j = index % len;
 		if (j + 3 < len && s[i][j + 1] == '.'\
 			&& s[i][j + 2] == '.' && s[i][j + 3] == '.')
-			if (tetra->type == I_TETRA_V)
-			{
-				s[i][j] = alpha_order;
-				s[i][j + 1] = alpha_order;
-				s[i][j + 2] = alpha_order;
-				s[i][j + 3] = alpha_order;
-				return (index);
-			}
+		{
+			s[i][j] = tetro->order;
+			s[i][j + 1] = tetro->order;
+			s[i][j + 2] = tetro->order;
+			s[i][j + 3] = tetro->order;
+			tetro->pos = index;
+			return (0);
+		}
+		index++;
 	}
 	return (-1);
 }
 
-char		ft_place_tn(const char **s, char index, char alpha_order)
+int		ft_place_tn(char **s, int index, t_tetra *tetro)
 {
 	int		i;
 	int		j;
-	size_t	len;
+	int		len;
 
-	len = ft_strlen(*s);
+	len = (int)ft_strlen(*s);
 	while ((index = ft_first_dot_pos(s, index)) >= 0)
 	{
 		i = index / len;
 		j = index % len;
 		if (i + 1 < len && j + 2 < len && s[i][j + 1] == '.'\
 			&& s[i][j + 2] == '.' && s[i + 1][j + 1] == '.')
-			if (tetra->type == T_TETRA_NOR)
-			{
-				s[i][j] = alpha_order;
-				s[i][j + 1] = alpha_order;
-				s[i][j + 2] = alpha_order;
-				s[i + 1][j + 1] = alpha_order;
-				return (index);
-			}
+		{
+			s[i][j] = tetro->order;
+			s[i][j + 1] = tetro->order;
+			s[i][j + 2] = tetro->order;
+			s[i + 1][j + 1] = tetro->order;
+			tetro->pos = index;
+			return (0);
+		}
+		index++;
 	}
 	return (-1);
 }

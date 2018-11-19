@@ -99,7 +99,8 @@ t_tetra			*ft_get_next_tetra(int fd, char order)
 	if (st == 1 && tetra_type >= 0)
 	{
 		tetra->type = tetra_type;
-		tetra->alpha_order = 'A' + order;
+		tetra->order = 'A' + order;
+		tetra->pos = 0;
 		tetra->next = NULL;
 		return (tetra);
 	}

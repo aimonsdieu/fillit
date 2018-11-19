@@ -1,108 +1,41 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   remove.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 11:57:26 by pkabore           #+#    #+#             */
-/*   Updated: 2018/11/16 15:04:23 by pkabore          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "fillit.h"
 
-t_bool		ft_remove_type_a(char **square, char type, size_t index)
+static int		ft_rm_remaining(char **s, char type, int index)
 {
-	int		i;
-	int		j;
-
-	i = index / 4;
-	j = index % 4;
-	if (type == O_TETRA && (s[i][j] = '.' && s[i][j + 1] = '.' &&\
-		s[i + 1][j] = '.' && s[i + 1][j + 1] = '.'))
-		return (true);
-	if (type == I_TETRA_V && (s[i][j] = '.' && s[i + 1][j] = '.' &&\
-		s[i + 2][j] = '.' && s[i + 3][j] = '.'))
-		return (true);
-	if (type == I_TETRA_H && (s[i][j] = '.' && s[i][j + 1] = '.' &&\
-		s[i][j + 2] = '.' && s[i][j + 3] = '.'))
-		return (true);
-	if (type == T_TETRA_NOR && (s[i][j] = '.' && s[i][j + 1] = '.' &&\
-		s[i][j + 2] = '.' && s[i + 1][j + 1] = '.'))
-		return (true);
-	if (type == T_TETRA_INV && (s[i][j] = '.' && s[i + 1][j - 1] = '.' &&\
-		s[i + 1][j] = '.' && s[i + 1][j + 1] = '.'))
-		return (true);
-	return (false);
+	if (type == J_TETRA_NOR)
+		return (ft_rm_jn(s, index));
+	if (type == J_TETRA_DEMIR)
+		return (ft_rm_jdr(s, index));
+	if (type == J_TETRA_QUARTR)
+		return (ft_rm_jqr(s, index));
+	if (type == J_TETRA_QUARTL)
+		return (ft_rm_jql(s, index));
+	return (-1);
 }
 
-t_bool		ft_remove_type_b(char **square, char type, size_t index)
+int				ft_remove(char **s, char type, int index)
 {
-	int		i;
-	int		j;
-
-	i = index / 4;
-	j = index % 4;
-	if (type == T_TETRA_LEFT && (s[i][j] = '.' && s[i + 1][j - 1] = '.' &&\
-		s[i + 1][j] = '.' && s[i + 2][j] = '.'))
-		return (true);
-	if (type == T_TETRA_RIGHT && (s[i][j] = '.' && s[i + 1][j] = '.' &&\
-		s[i + 2][j] = '.' && s[i + 1][j + 1] = '.'))
-		return (true);
-	if (type == S_TETRA_NOR && (s[i][j] = '.' && s[i][j + 1] = '.' &&\
-		s[i + 1][j - 1] = '.' && s[i + 1][j] = '.'))
-		return (true);
-	if (type == S_TETRA_TURNED && (s[i][j] = '.' && s[i + 1][j] = '.' &&\
-		s[i + 1][j + 1] = '.' && s[i + 2][j + 1] = '.'))
-		return (true);
-	if (type == Z_TETRA_NOR && (s[i][j] = '.' && s[i][j + 1] = '.' &&\
-		s[i + 1][j + 1] = '.' && s[i + 1][j + 2] = '.'))
-		return (true);
-	return (false);
-}
-
-t_bool		ft_remove_type_c(char **square, char type, size_t index)
-{
-	int		i;
-	int		j;
-
-	i = index / 4;
-	j = index % 4;
-	if (type == Z_TETRA_TURNED && (s[i][j] = '.' && s[i + 1][j - 1] = '.' &&\
-		s[i + 1][j] = '.' && s[i + 2][j - 1] = '.'))
-		return (true);
-	if (type == L_TETRA_NOR && (s[i][j] = '.' && s[i + 1][j] = '.' &&\
-		s[i + 2][j] = '.' && s[i + 2][j + 1] = '.'))
-		return (true);
-	if (type == L_TETRA_DEMIR && (s[i][j] = '.' && s[i][j + 1] = '.' &&\
-		s[i + 1][j + 1] = '.' && s[i + 2][j + 1] = '.'))
-		return (true);
-	if (type == L_TETRA_QUARTR && (s[i][j] = '.' && s[i][j + 1] = '.' &&\
-		s[i][j + 2] = '.' && s[i + 1][j] = '.'))
-		return (true);
-	if (type == L_TETRA_QUARTL && (s[i][j] = '.' && s[i + 1][j - 2] = '.' &&\
-		s[i + 1][j - 1] = '.' && s[i + 1][j] = '.'))
-		return (true);
-	return (false);
-}
-
-t_bool		ft_remove_type_d(char **square, char type, size_t index)
-{
-	int		i;
-	int		j;
-
-	i = index / 4;
-	j = index % 4;
-	if (type == J_TETRA_NOR && (s[i][j] = '.' && s[i + 1][j] = '.' &&\
-		s[i + 2][j] = '.' && s[i + 2][j - 1] = '.'))
-		return (true);
-	if (type == J_TETRA_DEMIR && (s[i][j] = '.' && s[i][j + 1] = '.' &&\
-		s[i + 1][j] = '.' && s[i + 2][j] = '.'))
-		return (true);
-	if (type == J_TETRA_QUARTR && (s[i][j] = '.' && s[i + 1][j] = '.' &&\
-		s[i + 1][j + 1] = '.' && s[i + 1][j + 2] = '.'))
-		return (true);
-	if (type == J_TETRA_QUARTL && (s[i][j] = '.' && s[i][j + 1] = '.' &&\
-		s[i][j + 2] = '.' && s[i + 1][j + 2] = '.'))
-		return (true);
-	return (false);
+	if (type == O_TETRA)
+		return (ft_rm_o(s, index));
+	if (type == I_TETRA_V)
+		return (ft_rm_iv(s, index));
+	if (type == I_TETRA_H)
+		return (ft_rm_ih(s, index));
+	if (type == S_TETRA_NOR)
+		return (ft_rm_sn(s, index));
+	if (type == S_TETRA_TURNED)
+		return (ft_rm_si(s, index));
+	if (type == Z_TETRA_NOR)
+		return (ft_rm_zn(s, index));
+	if (type == Z_TETRA_TURNED)
+		return (ft_rm_zi(s, index));
+	if (type == L_TETRA_NOR)
+		return (ft_rm_ln(s, index));
+	if (type == L_TETRA_DEMIR)
+		return (ft_rm_ldr(s, index));
+	if (type == L_TETRA_QUARTR)
+		return (ft_rm_lqr(s, index));
+	if (type == L_TETRA_QUARTL)
+		return (ft_rm_lql(s, index));
+	return (ft_rm_remaining(s, type, index));
 }

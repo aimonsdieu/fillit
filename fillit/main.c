@@ -17,7 +17,7 @@ void	ft_display(char **square)
 	char	i;
 
 	i = 0;
-	while (*(square + i))
+	while (**(square + i))
 	{
 		ft_putendl(*(square + i));
 		i++;
@@ -36,7 +36,7 @@ int		main(int argc, char **argv)
 		return (0);
 	}
 	fd = open(argv[1], O_RDONLY);
-	square = ft_get_square();
+	square = ft_get_area();
 	if (fd < 0 || square == NULL)
 		return (0);
 	tetra = ft_gettetraminos(fd);
@@ -45,7 +45,7 @@ int		main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-	if (ft_fillit(tetra, square, 2, 0))
+	if (ft_fillit(tetra, tetra, square, 0))
 		ft_display(square);
 	return (0);
 }

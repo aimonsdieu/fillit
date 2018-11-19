@@ -12,75 +12,75 @@
 
 #include "fillit.h"
 
-char	**ft_get_square(void)
+char	**ft_get_area(void)
 {
-	char	*square[MAX_SIDE];
+	char	**area;
 	size_t	i;
 
 	i = 0;
+	if (!(area = malloc(MAX_SIDE * sizeof(char *))))
+		return (NULL);
 	while (i < MAX_SIDE)
 	{
-		if (!(*(square + i) = ft_strnew(MAX_SIDE)))
+		if (!(*(area + i) = ft_strnew(MAX_SIDE)))
 			return (NULL);
 		i++;
 	}
-	(void)ft_memcpy(*square, "..", 2);
-	(void)ft_memcpy(*(square + 1), "..", 2);
-	return (square);
+	(void)ft_memcpy(*area, "..", 2);
+	(void)ft_memcpy(*(area + 1), "..", 2);
+	return (area);
 }
 
-void	ft_increase_area(char **square)
+void	ft_increase_area(char **area)
 {
 	size_t 	i;
 	size_t	len;
 
 	i = 0;
-	len = ft_strlen(*square);
-	while (i <= len)
+	len = ft_strlen(*area);
+	while (i <= len && i < MAX_SIDE)
 	{
-		ft_memset(*(square + i), '.', len + 1);
+		ft_memset(*(area + i), '.', len + 1);
 		i++;
 	}
 }
 
-int		ft_place_tetra(char **square, char type)
+void	ft_debug(char **area)
 {
-	
+	ft_putendl("");
+	ft_display(area);
+	ft_putendl("");
 }
 
-void	ft_remove_tetra(char **square, char type, size_t index)
+t_bool	ft_fillit(t_tetra *tetra, t_tetra *first, char **area, int pos)
 {
-	if (ft_remove_type_a(square, type, index))
-		return ;
-	if (ft_remove_type_b(square, type, index))
-		return ;
-	if (ft_remove_type_c(square, type, index))
-		return ;
-	ft_remove_type_d(square, type, index);
-}
+	int		len;
 
-t_bool	ft_fillit(t_tetra *tetra, char **square, char pos)
-{
-	size_t len;
-
-	len = ft_strlen(*square)
-	if (tetra == NULL)
-		return (true);
-	while (pos < len)
+	len = (int)ft_strlen(*area);
+	while (pos < len * len)
 	{
-		if ((pos = ft_place_tetra(square, tetra->type)))
+		if (ft_place_tetra(area, pos, tetra) >= 0)
 		{
-			if (ft_fillit(tetra->next, square, pos + 1))
+			ft_debug(area);
+			if (tetra->next == NULL)
 				return (true);
-			else
+			if (ft_fillit(tetra->next, first, area, 0))
+				return (true);
+			else if (pos == tetra->pos && pos)
 			{
-				ft_remove_tetra(square, tetra->type, pos);
-				if (ft_fillit(tetra, square, pos + 1))
-					return (true);
+				ft_remove(area, tetra->type, tetra->pos);
+				pos = tetra->pos;
 			}
+			if (ft_fillit(tetra, first, area, pos + 1))
+				return (true);
+		}
+		pos++;
+		if (pos == len * len - 1)
+		{
+			ft_increase_area(area);
+			if (ft_fillit(first, first, area, 0))
+				return (true);
 		}
 	}
-	ft_increase_area(square);
-	if (ft_fillit(square, tetra, 0))
-		return (true);
+	return (false);
 }
