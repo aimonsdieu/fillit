@@ -6,7 +6,7 @@
 /*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 01:59:19 by pkabore           #+#    #+#             */
-/*   Updated: 2018/11/20 11:20:01 by pkabore          ###   ########.fr       */
+/*   Updated: 2018/11/20 12:00:39 by pkabore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,18 +68,12 @@ t_bool	ft_fillit(t_tetra *tetra, t_tetra *first, char **area, int pos)
 			ft_debug(area, pos);
 			if (ft_fillit(tetra->next, first, area, 0))
 				return (true);
-			else
-			{
-				ft_remove(area, tetra->type, tetra->pos);
-				if (ft_fillit(tetra, first, area, tetra->pos + 1))
-					return (true);
-				else
-				{
-					ft_increase_area(area);
-					if (ft_fillit(first, first, area, 0))
-						return (true);
-				}
-			}
+			ft_remove(area, tetra->type, tetra->pos);
+			if (ft_fillit(tetra, first, area, tetra->pos + 1))
+				return (true);
+			ft_increase_area(area);
+			if (ft_fillit(first, first, area, 0))
+				return (true);
 		}
 		pos++;
 	}
