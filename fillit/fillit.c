@@ -6,7 +6,7 @@
 /*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 01:59:19 by pkabore           #+#    #+#             */
-/*   Updated: 2018/11/17 01:00:22 by pkabore          ###   ########.fr       */
+/*   Updated: 2018/11/20 11:20:01 by pkabore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,42 +45,43 @@ void	ft_increase_area(char **area)
 	}
 }
 
-void	ft_debug(char **area)
+void	ft_debug(char **area, int pos)
 {
 	ft_putendl("");
 	ft_display(area);
-	ft_putendl("");
+	ft_putstr("POS : ");
+	ft_putnbr(pos);
+	ft_putchar('\n');
 }
 
 t_bool	ft_fillit(t_tetra *tetra, t_tetra *first, char **area, int pos)
 {
 	int		len;
 
-	len = (int)ft_strlen(*area);
+	len = ft_strlen(*area);
+	if (tetra == NULL)
+		return (true);
 	while (pos < len * len)
 	{
 		if (ft_place_tetra(area, pos, tetra) >= 0)
 		{
-			ft_debug(area);
-			if (tetra->next == NULL)
-				return (true);
+			ft_debug(area, pos);
 			if (ft_fillit(tetra->next, first, area, 0))
 				return (true);
-			else if (pos == tetra->pos && pos)
+			else
 			{
 				ft_remove(area, tetra->type, tetra->pos);
-				pos = tetra->pos;
+				if (ft_fillit(tetra, first, area, tetra->pos + 1))
+					return (true);
+				else
+				{
+					ft_increase_area(area);
+					if (ft_fillit(first, first, area, 0))
+						return (true);
+				}
 			}
-			if (ft_fillit(tetra, first, area, pos + 1))
-				return (true);
 		}
 		pos++;
-		if (pos == len * len - 1)
-		{
-			ft_increase_area(area);
-			if (ft_fillit(first, first, area, 0))
-				return (true);
-		}
 	}
 	return (false);
 }

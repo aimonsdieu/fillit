@@ -6,11 +6,13 @@
 /*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 01:59:35 by pkabore           #+#    #+#             */
-/*   Updated: 2018/11/16 16:41:47 by pkabore          ###   ########.fr       */
+/*   Updated: 2018/11/20 11:06:34 by pkabore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void    ft_increase_area(char **area);
 
 void	ft_display(char **square)
 {
@@ -45,7 +47,8 @@ int		main(int argc, char **argv)
 		ft_putendl("error");
 		return (0);
 	}
-	if (ft_fillit(tetra, tetra, square, 0))
-		ft_display(square);
+	while (!ft_fillit(tetra, tetra, square, 0))
+		ft_increase_area(square);
+	ft_display(square);
 	return (0);
 }
