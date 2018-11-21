@@ -13,7 +13,7 @@ int		ft_rm_lql(char **s, int index)
 	s[i + 1][j - 2] = '.';
 	s[i + 1][j - 1] = '.';
 	s[i + 1][j] = '.';
-	return (0);
+	return (1);
 }
 
 int		ft_rm_jn(char **s, int index)
@@ -29,7 +29,7 @@ int		ft_rm_jn(char **s, int index)
 	s[i + 1][j] = '.';
 	s[i + 2][j] = '.';
 	s[i + 2][j - 1] = '.';
-	return (0);
+	return (1);
 }		
 
 int		ft_rm_jdr(char **s, int index)
@@ -45,7 +45,7 @@ int		ft_rm_jdr(char **s, int index)
 	s[i][j + 1] = '.';
 	s[i + 1][j] = '.';
 	s[i + 2][j] = '.';
-	return (0);
+	return (1);
 }
 
 int		ft_rm_jqr(char **s, int index)
@@ -61,7 +61,7 @@ int		ft_rm_jqr(char **s, int index)
 	s[i + 1][j] = '.';
 	s[i + 1][j + 1] = '.';
 	s[i + 1][j + 2] = '.';
-	return (0);
+	return (1);
 }
 
 int		ft_rm_jql(char **s, int index)
@@ -77,5 +77,5 @@ int		ft_rm_jql(char **s, int index)
 	s[i][j + 1] = '.';
 	s[i][j + 2] = '.';
 	s[i + 1][j + 2] = '.';
-	return (0);
+	return (1);
 }

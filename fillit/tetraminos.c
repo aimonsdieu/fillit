@@ -32,7 +32,7 @@ static int			ft_first_hash_pos(char **s)
 	return (-1);
 }
 
-char				ft_gettetra_type_a(char **s)
+int					ft_gettetra_type_a(char **s)
 {
 	int		i;
 	int		j;
@@ -59,7 +59,7 @@ char				ft_gettetra_type_a(char **s)
 	return (-1);
 }
 
-char				ft_gettetra_type_b(char **s)
+int					ft_gettetra_type_b(char **s)
 {
 	int		i;
 	int		j;
@@ -86,7 +86,7 @@ char				ft_gettetra_type_b(char **s)
 	return (-1);
 }
 
-char				ft_gettetra_type_c(char **s)
+int					ft_gettetra_type_c(char **s)
 {
 	int		i;
 	int		j;
@@ -113,7 +113,7 @@ char				ft_gettetra_type_c(char **s)
 	return (-1);
 }
 
-char				ft_gettetra_type_d(char **s)
+int					ft_gettetra_type_d(char **s)
 {
 	int		i;
 	int		j;

@@ -56,16 +56,16 @@ enum				e_tetra_type
 typedef struct		s_tetra
 {
 	char			*bloc[4];
-	char			type;
+	int				type;
 	char			order;
 	int				pos;
 	struct s_tetra	*next;
 }					t_tetra;
 
-char				ft_gettetra_type_a(char **s);
-char				ft_gettetra_type_b(char **s);
-char				ft_gettetra_type_c(char **s);
-char				ft_gettetra_type_d(char **s);
+int					ft_gettetra_type_a(char **s);
+int					ft_gettetra_type_b(char **s);
+int					ft_gettetra_type_c(char **s);
+int					ft_gettetra_type_d(char **s);
 
 t_tetra				*ft_get_next_tetra(int fd, char order);
 t_tetra				*ft_gettetraminos(int fd);

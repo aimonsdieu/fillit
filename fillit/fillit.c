@@ -56,23 +56,26 @@ void	ft_debug(char **area, int pos)
 
 t_bool	ft_fillit(t_tetra *tetra, t_tetra *first, char **area, int pos)
 {
-	int		len;
-
+	int				len;
+	t_tetra			*last;
 	len = ft_strlen(*area);
-	if (tetra == NULL)
-		return (true);
+	ft_debug(area, pos);
 	while (pos < len * len)
 	{
 		if (ft_place_tetra(area, pos, tetra) >= 0)
 		{
-			ft_debug(area, pos);
-			if (ft_fillit(tetra->next, first, area, 0))
+			if (tetra->next == NULL)
 				return (true);
-			ft_remove(area, tetra->type, tetra->pos);
-			if (ft_fillit(tetra, first, area, tetra->pos + 1))
+			last = tetra->next;
+			//ft_debug(last->bloc, pos);
+			if (ft_fillit(last, first, area, 0))
 				return (true);
 			else
-			{
+			{	
+				ft_debug(tetra->bloc, tetra->pos);
+				ft_remove(area, tetra->type, tetra->pos);
+				if (ft_fillit(tetra, first, area, tetra->pos + 1))
+					return (true);
 				ft_increase_area(area);
 				if (ft_fillit(first, first, area, 0))
 					return (true);

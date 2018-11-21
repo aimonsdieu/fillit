@@ -46,9 +46,9 @@ static t_bool	ft_iswell_filled(char *s)
 	return (true);
 }
 
-static char		ft_scantetra_type(char **s)
+static int		ft_scantetra_type(char **s)
 {
-	char	type;
+	int		type;
 
 	type = ft_gettetra_type_a(s);
 	if (type >= 0)
@@ -65,7 +65,7 @@ static char		ft_scantetra_type(char **s)
 	return (-1);
 }
 
-static char		ft_istetra(char **s)
+static int		ft_istetra(char **s)
 {
 	size_t	i;
 
@@ -88,7 +88,7 @@ t_tetra			*ft_get_next_tetra(int fd, char order)
 	t_tetra		*tetra;
 	int			st;
 	size_t		i;
-	char		tetra_type;
+	int			tetra_type;
 
 	i = 0;
 	if (!(tetra = (t_tetra *)malloc(sizeof(t_tetra))))

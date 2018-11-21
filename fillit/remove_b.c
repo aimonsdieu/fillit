@@ -13,7 +13,7 @@ int		ft_rm_ti(char **s, int index)
 	s[i + 1][j - 1] = '.';
 	s[i + 1][j] = '.';
 	s[i + 1][j + 1] = '.';
-	return (0);
+	return (1);
 }
 
 int		ft_rm_tl(char **s, int index)
@@ -29,7 +29,7 @@ int		ft_rm_tl(char **s, int index)
 	s[i + 1][j - 1] = '.';
 	s[i + 1][j] = '.';
 	s[i + 2][j] = '.';
-	return (0);
+	return (1);
 }
 
 int		ft_rm_tr(char **s, int index)
@@ -45,7 +45,7 @@ int		ft_rm_tr(char **s, int index)
 	s[i + 1][j] = '.';
 	s[i + 2][j] = '.';
 	s[i + 1][j + 1] = '.';
-	return (0);
+	return (1);
 }
 
 int		ft_rm_sn(char **s, int index)
@@ -61,7 +61,7 @@ int		ft_rm_sn(char **s, int index)
 	s[i][j + 1] = '.';
 	s[i + 1][j - 1] = '.';
 	s[i + 1][j] = '.';
-	return (0);
+	return (1);
 }
 
 int		ft_rm_si(char **s, int index)
@@ -77,5 +77,5 @@ int		ft_rm_si(char **s, int index)
 	s[i + 1][j] = '.';
 	s[i + 1][j + 1] = '.';
 	s[i + 2][j + 1] = '.';
-	return (0);
+	return (1);
 }
