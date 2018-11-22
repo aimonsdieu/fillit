@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-int		ft_rm_lql(char **s, int index)
+t_bool		ft_rm_lql(char **s, int index)
 {
 	int		i;
 	int		j;
@@ -13,10 +13,10 @@ int		ft_rm_lql(char **s, int index)
 	s[i + 1][j - 2] = '.';
 	s[i + 1][j - 1] = '.';
 	s[i + 1][j] = '.';
-	return (1);
+	return (true);
 }
 
-int		ft_rm_jn(char **s, int index)
+t_bool		ft_rm_jn(char **s, int index)
 {
 	int		i;
 	int		j;
@@ -29,10 +29,10 @@ int		ft_rm_jn(char **s, int index)
 	s[i + 1][j] = '.';
 	s[i + 2][j] = '.';
 	s[i + 2][j - 1] = '.';
-	return (1);
+	return (true);
 }		
 
-int		ft_rm_jdr(char **s, int index)
+t_bool		ft_rm_jdr(char **s, int index)
 {
 	int		i;
 	int		j;
@@ -45,10 +45,10 @@ int		ft_rm_jdr(char **s, int index)
 	s[i][j + 1] = '.';
 	s[i + 1][j] = '.';
 	s[i + 2][j] = '.';
-	return (1);
+	return (true);
 }
 
-int		ft_rm_jqr(char **s, int index)
+t_bool		ft_rm_jqr(char **s, int index)
 {
 	int		i;
 	int		j;
@@ -61,10 +61,10 @@ int		ft_rm_jqr(char **s, int index)
 	s[i + 1][j] = '.';
 	s[i + 1][j + 1] = '.';
 	s[i + 1][j + 2] = '.';
-	return (1);
+	return (true);
 }
 
-int		ft_rm_jql(char **s, int index)
+t_bool		ft_rm_jql(char **s, int index)
 {
 	int		i;
 	int		j;
@@ -77,5 +77,5 @@ int		ft_rm_jql(char **s, int index)
 	s[i][j + 1] = '.';
 	s[i][j + 2] = '.';
 	s[i + 1][j + 2] = '.';
-	return (1);
+	return (true);
 }

@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int		ft_place_o(char **s, int index, t_tetra *tetro)
+t_bool		ft_place_o(char **s, int index, t_tetra *tetro)
 {
 	int		i;
 	int		j;
@@ -22,7 +22,7 @@ int		ft_place_o(char **s, int index, t_tetra *tetro)
 	i = index / len;
 	j = index % len;
 	if (s[i][j] != '.')
-		return (-1);
+		return (false);
 	if (i + 1 < len && j + 1 < len && s[i][j + 1] == '.'\
 		&& s[i + 1][j] == '.' && s[i + 1][j + 1] == '.')
 	{
@@ -31,11 +31,12 @@ int		ft_place_o(char **s, int index, t_tetra *tetro)
 		s[i + 1][j] = tetro->order;
 		s[i + 1][j + 1] = tetro->order;
 		tetro->pos = index;
+		return (true);
 	}
-	return (-1);
+	return (false);
 }
 
-int		ft_place_iv(char **s, int index, t_tetra *tetro)
+t_bool		ft_place_iv(char **s, int index, t_tetra *tetro)
 {
 	int		i;
 	int		j;
@@ -45,7 +46,7 @@ int		ft_place_iv(char **s, int index, t_tetra *tetro)
 	i = index / len;
 	j = index % len;
 	if (s[i][j] != '.')
-		return (-1);
+		return (false);
 	if (i + 3 < len && s[i + 1][j] == '.'\
 		&& s[i + 2][j] == '.' && s[i + 3][j] == '.')
 	{
@@ -54,12 +55,12 @@ int		ft_place_iv(char **s, int index, t_tetra *tetro)
 		s[i + 2][j] = tetro->order;
 		s[i + 3][j] = tetro->order;
 		tetro->pos = index;
-		return (0);
+		return (true);
 	}
-	return (-1);
+	return (false);
 }
 
-int		ft_place_ih(char **s, int index, t_tetra *tetro)
+t_bool		ft_place_ih(char **s, int index, t_tetra *tetro)
 {
 	int		i;
 	int		j;
@@ -69,7 +70,7 @@ int		ft_place_ih(char **s, int index, t_tetra *tetro)
 	i = index / len;
 	j = index % len;
 	if (s[i][j] != '.')
-		return (-1);
+		return (false);
 	if (j + 3 < len && s[i][j + 1] == '.'\
 		&& s[i][j + 2] == '.' && s[i][j + 3] == '.')
 	{
@@ -78,12 +79,12 @@ int		ft_place_ih(char **s, int index, t_tetra *tetro)
 		s[i][j + 2] = tetro->order;
 		s[i][j + 3] = tetro->order;
 		tetro->pos = index;
-		return (0);
+		return (true);
 	}
-	return (-1);
+	return (false);
 }
 
-int		ft_place_tn(char **s, int index, t_tetra *tetro)
+t_bool		ft_place_tn(char **s, int index, t_tetra *tetro)
 {
 	int		i;
 	int		j;
@@ -93,7 +94,7 @@ int		ft_place_tn(char **s, int index, t_tetra *tetro)
 	i = index / len;
 	j = index % len;
 	if (s[i][j] != '.')
-		return (-1);
+		return (false);
 	if (i + 1 < len && j + 2 < len && s[i][j + 1] == '.'\
 		&& s[i][j + 2] == '.' && s[i + 1][j + 1] == '.')
 	{
@@ -102,7 +103,7 @@ int		ft_place_tn(char **s, int index, t_tetra *tetro)
 		s[i][j + 2] = tetro->order;
 		s[i + 1][j + 1] = tetro->order;
 		tetro->pos = index;
-		return (0);
+		return (true);
 	}
-	return (-1);
+	return (false);
 }

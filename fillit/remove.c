@@ -1,6 +1,6 @@
 #include "fillit.h"
 
-static int		ft_rm_remaining(char **s, char type, int index)
+static t_bool		ft_rm_remaining(char **s, char type, int index)
 {
 	if (type == J_TETRA_NOR)
 		return (ft_rm_jn(s, index));
@@ -10,10 +10,18 @@ static int		ft_rm_remaining(char **s, char type, int index)
 		return (ft_rm_jqr(s, index));
 	if (type == J_TETRA_QUARTL)
 		return (ft_rm_jql(s, index));
-	return (-1);
+	if (type == T_TETRA_NOR)
+		return (ft_rm_tn(s, index));
+	if (type == T_TETRA_INV)
+		return (ft_rm_ti(s, index));
+	if (type == T_TETRA_LEFT)
+		return (ft_rm_tr(s, index));
+	if (type == T_TETRA_RIGHT)
+		return (ft_rm_tr(s, index));
+	return (false);
 }
 
-int				ft_remove(char **s, char type, int index)
+t_bool				ft_remove(char **s, char type, int index)
 {
 	if (type == O_TETRA)
 		return (ft_rm_o(s, index));

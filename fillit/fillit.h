@@ -56,8 +56,8 @@ enum				e_tetra_type
 typedef struct		s_tetra
 {
 	char			*bloc[4];
-	int				type;
 	char			order;
+	int				type;
 	int				pos;
 	struct s_tetra	*next;
 }					t_tetra;
@@ -72,56 +72,50 @@ t_tetra				*ft_gettetraminos(int fd);
 void				ft_deltetraminos(t_tetra *first_tetra);
 
 char				**ft_get_area(void);
-void				ft_remove_tetra(char **square, char type, size_t index);
 t_bool				ft_fillit(t_tetra *t, t_tetra *f, char **square, int pos);
 
-int					ft_place_tetra(char **s, int index, t_tetra *t);
+t_bool				ft_place_o(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_iv(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_ih(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_tn(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_tr(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_tl(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_ti(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_sn(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_si(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_zn(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_zi(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_ln(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_ldr(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_lqr(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_lql(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_jn(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_jdr(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_jqr(char **s, int index, t_tetra *tetro);
+t_bool				ft_place_jql(char **s, int index, t_tetra *tetro);
 
-int					ft_first_dot_pos(char **s, int index);
+t_bool				ft_place_tetra(char **s, int index, t_tetra *t);
 
-int					ft_place_o(char **s, int index, t_tetra *tetro);
-int					ft_place_iv(char **s, int index, t_tetra *tetro);
-int					ft_place_ih(char **s, int index, t_tetra *tetro);
-int					ft_place_tn(char **s, int index, t_tetra *tetro);
-int					ft_place_tr(char **s, int index, t_tetra *tetro);
-int					ft_place_tl(char **s, int index, t_tetra *tetro);
-int					ft_place_ti(char **s, int index, t_tetra *tetro);
-int					ft_place_sn(char **s, int index, t_tetra *tetro);
-int					ft_place_si(char **s, int index, t_tetra *tetro);
-int					ft_place_zn(char **s, int index, t_tetra *tetro);
-int					ft_place_zi(char **s, int index, t_tetra *tetro);
-int					ft_place_ln(char **s, int index, t_tetra *tetro);
-int					ft_place_ldr(char **s, int index, t_tetra *tetro);
-int					ft_place_lqr(char **s, int index, t_tetra *tetro);
-int					ft_place_lql(char **s, int index, t_tetra *tetro);
-int					ft_place_jn(char **s, int index, t_tetra *tetro);
-int					ft_place_jdr(char **s, int index, t_tetra *tetro);
-int					ft_place_jqr(char **s, int index, t_tetra *tetro);
-int					ft_place_jql(char **s, int index, t_tetra *tetro);
+t_bool				ft_rm_o(char **s, int index);
+t_bool				ft_rm_iv(char **s, int index);
+t_bool				ft_rm_ih(char **s, int index);
+t_bool				ft_rm_tn(char **s, int index);
+t_bool				ft_rm_tr(char **s, int index);
+t_bool				ft_rm_tl(char **s, int index);
+t_bool				ft_rm_ti(char **s, int index);
+t_bool				ft_rm_sn(char **s, int index);
+t_bool				ft_rm_si(char **s, int index);
+t_bool				ft_rm_zn(char **s, int index);
+t_bool				ft_rm_zi(char **s, int index);
+t_bool				ft_rm_ln(char **s, int index);
+t_bool				ft_rm_ldr(char **s, int index);
+t_bool				ft_rm_lqr(char **s, int index);
+t_bool				ft_rm_lql(char **s, int index);
+t_bool				ft_rm_jn(char **s, int index);
+t_bool				ft_rm_jdr(char **s, int index);
+t_bool				ft_rm_jqr(char **s, int index);
+t_bool				ft_rm_jql(char **s, int index);
 
-int					ft_rm_o(char **s, int index);
-int					ft_rm_iv(char **s, int index);
-int					ft_rm_ih(char **s, int index);
-int					ft_rm_tn(char **s, int index);
-int					ft_rm_tr(char **s, int index);
-int					ft_rm_tl(char **s, int index);
-int					ft_rm_ti(char **s, int index);
-int					ft_rm_sn(char **s, int index);
-int					ft_rm_si(char **s, int index);
-int					ft_rm_zn(char **s, int index);
-int					ft_rm_zi(char **s, int index);
-int					ft_rm_ln(char **s, int index);
-int					ft_rm_ldr(char **s, int index);
-int					ft_rm_lqr(char **s, int index);
-int					ft_rm_lql(char **s, int index);
-int					ft_rm_jn(char **s, int index);
-int					ft_rm_jdr(char **s, int index);
-int					ft_rm_jqr(char **s, int index);
-int					ft_rm_jql(char **s, int index);
-
-int					ft_remove(char **square, char type, int index);
-
-
-void	ft_display(char **square);
+t_bool				ft_remove(char **square, char type, int index);
 
 #endif

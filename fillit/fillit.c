@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 char	**ft_get_area(void)
 {
@@ -45,41 +46,27 @@ void	ft_increase_area(char **area)
 	}
 }
 
-void	ft_debug(char **area, int pos)
-{
-	ft_putendl("");
-	ft_display(area);
-	ft_putstr("POS : ");
-	ft_putnbr(pos);
-	ft_putchar('\n');
-}
-
 t_bool	ft_fillit(t_tetra *tetra, t_tetra *first, char **area, int pos)
 {
 	int				len;
-	t_tetra			*last;
+
 	len = ft_strlen(*area);
-	ft_debug(area, pos);
+	if (tetra == NULL)
+		return (true);
 	while (pos < len * len)
 	{
-		if (ft_place_tetra(area, pos, tetra) >= 0)
+		if (ft_place_tetra(area, pos, tetra))
 		{
-			if (tetra->next == NULL)
+			if (ft_fillit(tetra->next, first, area, 0))
 				return (true);
-			last = tetra->next;
-			//ft_debug(last->bloc, pos);
-			if (ft_fillit(last, first, area, 0))
+			ft_remove(area, tetra->type, tetra->pos);
+			if (ft_fillit(tetra, first, area, tetra->pos + 1))
 				return (true);
-			else
-			{	
-				ft_debug(tetra->bloc, tetra->pos);
-				ft_remove(area, tetra->type, tetra->pos);
-				if (ft_fillit(tetra, first, area, tetra->pos + 1))
-					return (true);
-				ft_increase_area(area);
-				if (ft_fillit(first, first, area, 0))
-					return (true);
-			}
+			if (tetra != first)
+				return (false);
+			ft_increase_area(area);
+			if (ft_fillit(first, first, area, 0))
+				return (true);
 		}
 		pos++;
 	}
