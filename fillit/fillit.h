@@ -24,7 +24,7 @@ typedef enum		e_bool
 	true
 }					t_bool;
 
-enum				e_tetra_type
+enum				e_type
 {
 	O_TETRA,
 
@@ -72,6 +72,8 @@ t_tetra				*ft_gettetraminos(int fd);
 void				ft_deltetraminos(t_tetra *first_tetra);
 
 char				**ft_get_area(void);
+void				ft_increase_area(char **area);
+void				ft_remove_tetra(char **square, char type, size_t index);
 t_bool				ft_fillit(t_tetra *t, t_tetra *f, char **square, int pos);
 
 t_bool				ft_place_o(char **s, int index, t_tetra *tetro);

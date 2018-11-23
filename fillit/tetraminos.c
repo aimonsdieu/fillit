@@ -39,6 +39,8 @@ int					ft_gettetra_type_a(char **s)
 	int		index;
 
 	index = ft_first_hash_pos(s);
+	if (index < 0)
+		return (-1);
 	i = index / 4;
 	j = index % 4;
 	if (i + 1 < 4 && j + 1 < 4 && s[i][j + 1] == '#'\
@@ -66,6 +68,8 @@ int					ft_gettetra_type_b(char **s)
 	int		index;
 
 	index = ft_first_hash_pos(s);
+	if (index < 0)
+		return (-1);
 	i = index / 4;
 	j = index % 4;
 	if (i + 2 < 4 && j - 1 >= 0 && s[i + 1][j - 1] == '#'\
@@ -93,6 +97,8 @@ int					ft_gettetra_type_c(char **s)
 	int		index;
 
 	index = ft_first_hash_pos(s);
+	if (index < 0)
+		return (-1);
 	i = index / 4;
 	j = index % 4;
 	if (i + 2 < 4 && j - 1 >= 0 && s[i + 1][j - 1] == '#'\
@@ -120,6 +126,8 @@ int					ft_gettetra_type_d(char **s)
 	int		index;
 
 	index = ft_first_hash_pos(s);
+	if (index < 0)
+		return (-1);
 	i = index / 4;
 	j = index % 4;
 	if (i + 2 < 4 && j - 1 >= 0 && s[i + 1][j] == '#'\
