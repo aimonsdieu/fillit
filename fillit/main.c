@@ -6,7 +6,7 @@
 /*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 01:59:35 by pkabore           #+#    #+#             */
-/*   Updated: 2018/11/20 11:06:34 by pkabore          ###   ########.fr       */
+/*   Updated: 2018/11/23 20:05:57 by pkabore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ int		main(int argc, char **argv)
 		ft_increase_area(square);
 	ft_display(square);
 	ft_deltetraminos(tetra);
-	ft_fee_space(square);
+	ft_free_space(square);
 	return (0);
 }

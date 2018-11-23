@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   place_d.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/23 22:24:07 by pkabore           #+#    #+#             */
+/*   Updated: 2018/11/23 22:30:22 by pkabore          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fillit.h"
 
 t_bool		ft_place_lql(char **s, int index, t_tetra *tetro)
@@ -46,7 +58,7 @@ t_bool		ft_place_jn(char **s, int index, t_tetra *tetro)
 		return (true);
 	}
 	return (false);
-}		
+}
 
 t_bool		ft_place_jdr(char **s, int index, t_tetra *tetro)
 {

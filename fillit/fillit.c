@@ -6,12 +6,11 @@
 /*   By: pkabore <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 01:59:19 by pkabore           #+#    #+#             */
-/*   Updated: 2018/11/20 12:11:59 by pkabore          ###   ########.fr       */
+/*   Updated: 2018/11/23 22:36:01 by pkabore          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 char	**ft_get_area(void)
 {
@@ -68,7 +67,7 @@ t_bool	ft_fillit(t_tetra *tetra, t_tetra *first, char **area, int pos)
 			if (ft_fillit(first, first, area, 0))
 				return (true);
 		}
-		pos++;
+		++pos;
 	}
 	return (false);
 }
